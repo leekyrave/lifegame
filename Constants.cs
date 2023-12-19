@@ -16,5 +16,7 @@ namespace GameOfLife
 
         public const string ALIVE_POINT = "\x1b[92m*\x1b[39m";
         public const string DEAD_POINT = "*";
+
+
     }
 }

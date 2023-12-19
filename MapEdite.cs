@@ -8,7 +8,7 @@ namespace GameOfLife
 {
     internal class MapEdite
     {
-        bool[,] map;
+        public bool[,] map;
 
         public MapEdite(int X, int Y) {
             map = new bool[Y, X];
@@ -33,18 +33,22 @@ namespace GameOfLife
                 }
                 Console.Write("\n");
             }
+
+            Console.Write("\n\n");
         }
 
         public void NextGeneration()
         {
-            bool[,] tmp;
-            for(int i = 0; i  <= map.GetLength(0); i++)
+            for(int i = 0; i <= map.GetLength(0); i++)
             {
                 for(int j = 0; j <= map.GetLength(1); j++)
                 {
-                     
+                    CheckArray.SetLiveOrDie(ref map, i, j);
+                    this.ShowMap();
+                    Console.ReadKey();
                 }
             }
         }
+
     }
 }

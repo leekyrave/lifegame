@@ -3,11 +3,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        int X, Y = 0;
+        int X, Y = 25;
         Console.WriteLine("Welcome to the game! Game of Life.\nPlease, enter the size of game-map X x Y\nValid sizes is:\nX: {0} - {1}\nY: {2} - {3}\n\nX: ", Constants.MIN_HORIZONTAL, Constants.MAX_HORIZONTAL, Constants.MIN_VERTICAL, Constants.MAX_VERTICAL);
 
-      
-        while(true)
+        //Console.WriteLine(CycleArray.CircularArrayLoop);
+        //Console.WriteLine(Math.Abs(28) % Y);
+        while (true)
         {
             if(Int32.TryParse(Console.ReadLine(), out X))
             {
@@ -65,10 +66,12 @@ class Program
         }
 
         Console.WriteLine("Game is Started");
-
+        
+        Console.WriteLine(mapProcess.map[5 % Y,5 % X]);
         while(true)
         {
 
+            mapProcess.NextGeneration();
         }
 
 
