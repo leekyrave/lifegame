@@ -8,26 +8,28 @@ namespace GameOfLife
 {
     public class CheckArray
     {
-        public static void SetLiveOrDie(ref bool[,] array, int y, int x)
-        {
-            for(int i = -1; i <= 1; i++)
-            {
-                for(int j = -1; j <= 1; j++)
-                {
-                    if (j == 0) continue;
-                    try
-                    {
-                        y = (y + i > array.GetLength(0)) ? (Math.Abs(i) % y) - 1 : (y + i < 0) ? array.Length : y + i;
-                        x = (x + j > array.GetLength(1)) ? (Math.Abs(j) % x) - 1 : (x + j < 0) ? 5 : x + j;
 
-                        array[y + i, x + j] = true;
-                    } catch(Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
-                    
-                }
-            }
+        // Something like "Cyclic array for topologic map"
+        public static int GetAbsoluteIndex(int size, int index)
+        {
+            /* 
+                if(index >= size) 
+                    index = index % size;
+                else if(index < 0)
+                    index = size - (Math.Abs(index) % size);
+
+                Example:
+                    Size of array: 25;
+                    Index: 25
+                In normal situations it will be Exception(overflow), but if we use absolute index - it will be INDEX: 0. 26 - 1; 27 - 2, etc..
+
+                Example #2:
+                    Size of array: 25;
+                    Index: -5
+                If we use abs. index - it will be INDEX: 20, etc...
+            */
+            index = (index >= size) ? index % size : (index < 0) ? size - (Math.Abs(index) % size) : index; 
+            return index;
         }
 
 
